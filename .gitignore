@@ -1,4 +1,6 @@
 __pycache__
 build
 uploads
+venv
+buildvenv
 .DS_Store

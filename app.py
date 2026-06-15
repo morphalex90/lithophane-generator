@@ -113,8 +113,12 @@ def download(filename):
     # crafted filename can't reach files outside the output folder.
     return send_from_directory(output_dir(), filename, as_attachment=True)
 
+# Port can be overridden via the PORT env var. Handy when something else on the
+# machine already holds 5000 (e.g. macOS AirPlay Receiver / Control Center).
+PORT = int(os.environ.get("PORT", "5000"))
+
 def open_browser():
-    webbrowser.open("http://127.0.0.1:5000")
+    webbrowser.open(f"http://127.0.0.1:{PORT}")
 
 def watched_files():
     """Extra files (templates, static assets) that should trigger a reload
@@ -138,6 +142,7 @@ if __name__ == "__main__":
     # Auto-reload on edits during development. Disabled in a PyInstaller build,
     # where the reloader can't relaunch the frozen interpreter.
     app.run(
+        port=PORT,
         debug=not FROZEN,
         use_reloader=not FROZEN,
         extra_files=watched_files(),
