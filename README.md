@@ -14,30 +14,12 @@ file in the `uploads/` directory:
 
 ## Run locally
 
-### 1. Clone and enter the project
+The quickest path on macOS / Linux is the `Makefile`:
 
     git clone https://github.com/<your-account>/pet-cemetery-lithophane.git
     cd pet-cemetery-lithophane
-
-### 2. Create and activate a virtual environment (recommended)
-
-macOS / Linux:
-
-    python3 -m venv venv
-    source venv/bin/activate
-
-Windows (PowerShell):
-
-    python -m venv venv
-    venv\Scripts\Activate.ps1
-
-### 3. Install dependencies
-
-    pip install -r requirements.txt
-
-### 4. Start the app
-
-    python app.py
+    make install      # create the venv and install dependencies
+    make run          # start the app
 
 The server starts on http://127.0.0.1:5000 and your default browser opens
 automatically. Use the page to upload one or more images; the generated STL
@@ -46,15 +28,54 @@ files appear in the `uploads/` folder.
 > Tip: the app uses a headless (non-GUI) matplotlib backend, so it runs fine
 > on servers and over SSH without a display.
 
-## To build into an application
+<details>
+<summary>Manual setup (or Windows)</summary>
+
+Create and activate a virtual environment:
+
+    # macOS / Linux
+    python3 -m venv venv
+    source venv/bin/activate
+
+    # Windows (PowerShell)
+    python -m venv venv
+    venv\Scripts\Activate.ps1
+
+Install dependencies and start the app:
+
+    pip install -r requirements.txt
+    python app.py
+
+</details>
+
+## Build a standalone application
+
+Builds are produced with [PyInstaller](https://pyinstaller.org/) from an
+**isolated virtualenv** that holds only the real dependencies. Building from a
+global or Anaconda environment sweeps in unrelated libraries (torch, OpenCV,
+...) and bloats the binary to 600+ MB; the clean venv keeps it small. The
+`Makefile` and [MyCoolApp.spec](MyCoolApp.spec) handle this for you.
+
+> PyInstaller cannot cross-compile: build the macOS binary on macOS and the
+> Windows `.exe` on Windows.
+
+### macOS
+
+    make build-macos          # -> dist/MyCoolApp
 
 ### Windows
 
-    pyinstaller --onefile --name MyCoolApp --icon path/to/icon.ico --add-data "templates;templates" --add-data "static;static" app.py
+    make build-windows         # -> dist\MyCoolApp.exe
 
-### macOS/Linux
+If `make` is not available on Windows, run the same steps by hand:
 
-    pyinstaller --onefile --name MyCoolApp --icon path/to/icon.icns --add-data "templates:templates" --add-data "static:static" app.py
+    python -m venv buildvenv
+    buildvenv\Scripts\python -m pip install -r requirements.txt pyinstaller
+    buildvenv\Scripts\pyinstaller --noconfirm MyCoolApp.spec
 
-Otherwise use `build.bat` for Windows and `build.sh` for macOS (remember to
-`chmod +x build.sh`).
+(`build.sh` / `build.bat` remain as thin wrappers around the same commands;
+remember to `chmod +x build.sh` on macOS.)
+
+### Clean up build artifacts
+
+    make clean
