@@ -44,7 +44,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='MyCoolApp',
+    name='lithophane-generator',
     debug=False,
     bootloader_ignore_signals=False,
     strip=True,

@@ -12,7 +12,7 @@ python3 -m venv buildvenv
 ./buildvenv/bin/python -m pip install --quiet -r requirements.txt pyinstaller
 
 # 2. Build using the slim spec (handles excludes, strip, datas).
-rm -rf build dist/MyCoolApp
-./buildvenv/bin/pyinstaller --noconfirm MyCoolApp.spec
+rm -rf build dist/lithophane-generator
+./buildvenv/bin/pyinstaller --noconfirm lithophane-generator.spec
 
 echo "Build complete! Executable is in the dist/ folder."

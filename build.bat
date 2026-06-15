@@ -1,6 +1,6 @@
 @echo off
 REM --- Customize these variables ---
-set APP_NAME=MyCoolApp
+set APP_NAME=lithophane-generator
 set ICON_PATH=path\to\icon.ico
 
 REM --- Run PyInstaller ---

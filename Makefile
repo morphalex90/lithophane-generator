@@ -1,4 +1,4 @@
-APP_NAME = MyCoolApp
+APP_NAME = lithophane-generator
 
 # ----------------------------------------------------------------------------
 # Local development (macOS / Linux)
@@ -26,22 +26,22 @@ run:
 # Windows .exe ON Windows.
 # ----------------------------------------------------------------------------
 
-# Build the macOS executable -> dist/MyCoolApp
+# Build the macOS executable -> dist/lithophane-generator
 build-macos:
 	python3 -m venv buildvenv
 	./buildvenv/bin/python -m pip install --upgrade pip
 	./buildvenv/bin/python -m pip install -r requirements.txt pyinstaller
 	rm -rf build dist/$(APP_NAME)
-	./buildvenv/bin/pyinstaller --noconfirm MyCoolApp.spec
+	./buildvenv/bin/pyinstaller --noconfirm lithophane-generator.spec
 	@echo "macOS build ready: dist/$(APP_NAME)"
 
-# Build the Windows executable -> dist\MyCoolApp.exe  (must be run ON Windows)
+# Build the Windows executable -> dist\lithophane-generator.exe  (must be run ON Windows)
 build-windows:
 	python -m venv buildvenv
 	buildvenv\Scripts\python -m pip install --upgrade pip
 	buildvenv\Scripts\python -m pip install -r requirements.txt pyinstaller
-	buildvenv\Scripts\pyinstaller --noconfirm MyCoolApp.spec
-	@echo Windows build ready: dist\MyCoolApp.exe
+	buildvenv\Scripts\pyinstaller --noconfirm lithophane-generator.spec
+	@echo Windows build ready: dist\lithophane-generator.exe
 
 # Remove build artifacts and the isolated build venv.
 clean:

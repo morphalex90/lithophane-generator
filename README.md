@@ -11,8 +11,8 @@ file in the `uploads/` directory:
 
 Grab a prebuilt standalone app — no Python setup required:
 
-- **macOS:** [Download for macOS](https://github.com/morphalex90/lithophane-generator/releases/latest/download/MyCoolApp-macos)
-- **Windows:** [Download for Windows](https://github.com/morphalex90/lithophane-generator/releases/latest/download/MyCoolApp-windows.exe)
+- **macOS:** [Download for macOS](https://github.com/morphalex90/lithophane-generator/releases/latest/download/lithophane-generator-macos)
+- **Windows:** [Download for Windows](https://github.com/morphalex90/lithophane-generator/releases/latest/download/lithophane-generator-windows.exe)
 
 These always point at the newest build, published automatically from
 [GitHub Actions](.github/workflows/build.yml) on every update to `main`.
@@ -67,24 +67,24 @@ Builds are produced with [PyInstaller](https://pyinstaller.org/) from an
 **isolated virtualenv** that holds only the real dependencies. Building from a
 global or Anaconda environment sweeps in unrelated libraries (torch, OpenCV,
 ...) and bloats the binary to 600+ MB; the clean venv keeps it small. The
-`Makefile` and [MyCoolApp.spec](MyCoolApp.spec) handle this for you.
+`Makefile` and [lithophane-generator.spec](lithophane-generator.spec) handle this for you.
 
 > PyInstaller cannot cross-compile: build the macOS binary on macOS and the
 > Windows `.exe` on Windows.
 
 ### macOS
 
-    make build-macos          # -> dist/MyCoolApp
+    make build-macos          # -> dist/lithophane-generator
 
 ### Windows
 
-    make build-windows         # -> dist\MyCoolApp.exe
+    make build-windows         # -> dist\lithophane-generator.exe
 
 If `make` is not available on Windows, run the same steps by hand:
 
     python -m venv buildvenv
     buildvenv\Scripts\python -m pip install -r requirements.txt pyinstaller
-    buildvenv\Scripts\pyinstaller --noconfirm MyCoolApp.spec
+    buildvenv\Scripts\pyinstaller --noconfirm lithophane-generator.spec
 
 (`build.sh` / `build.bat` remain as thin wrappers around the same commands;
 remember to `chmod +x build.sh` on macOS.)
