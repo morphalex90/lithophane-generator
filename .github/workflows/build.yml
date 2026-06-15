@@ -18,11 +18,11 @@ jobs:
       matrix:
         include:
           - os: macos-latest
-            artifact: MyCoolApp-macos
-            path: dist/MyCoolApp
+            artifact: lithophane-generator-macos
+            path: dist/lithophane-generator
           - os: windows-latest
-            artifact: MyCoolApp-windows
-            path: dist/MyCoolApp.exe
+            artifact: lithophane-generator-windows
+            path: dist/lithophane-generator.exe
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -36,6 +36,10 @@ jobs:
         env:
           HOMEBREW_NO_AUTO_UPDATE: 1
           HOMEBREW_NO_ENV_HINTS: 1
+          # The runner pre-taps aws/tap and azure/bicep, which Homebrew now
+          # flags as untrusted. upx is a core formula and needs neither, so
+          # opt out of the trust check to silence the warning.
+          HOMEBREW_NO_REQUIRE_TAP_TRUST: 1
         run: brew install upx
 
       - name: Install UPX (Windows)
@@ -48,7 +52,7 @@ jobs:
           pip install -r requirements.txt pyinstaller
 
       - name: Build
-        run: pyinstaller --noconfirm MyCoolApp.spec
+        run: pyinstaller --noconfirm lithophane-generator.spec
 
       - uses: actions/upload-artifact@v4
         with:
@@ -69,8 +73,8 @@ jobs:
       - name: Rename binaries for release
         run: |
           mkdir release
-          cp artifacts/MyCoolApp-macos/MyCoolApp   release/MyCoolApp-macos
-          cp artifacts/MyCoolApp-windows/MyCoolApp.exe release/MyCoolApp-windows.exe
+          cp artifacts/lithophane-generator-macos/lithophane-generator   release/lithophane-generator-macos
+          cp artifacts/lithophane-generator-windows/lithophane-generator.exe release/lithophane-generator-windows.exe
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
