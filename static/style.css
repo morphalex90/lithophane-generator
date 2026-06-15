@@ -132,6 +132,46 @@ h1 {
     outline-offset: 2px;
 }
 
+.params-field {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.params-field legend {
+    padding: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.params-grid {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.param {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.param input {
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+.param input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
+}
+
 button {
     position: relative;
     display: inline-flex;

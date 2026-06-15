@@ -61,6 +61,17 @@ def process():
     if shape not in ("flat", "cylinder", "both"):
         return jsonify({"error": f"Invalid shape: {shape}"}), 400
 
+    # Numeric generation parameters (defaults mirror convert_to_lithophane).
+    try:
+        width = float(request.form.get("width", 102))
+        depth = float(request.form.get("depth", 3))
+        offset = float(request.form.get("offset", 0.5))
+    except ValueError:
+        return jsonify({"error": "Width, depth and offset must be numbers."}), 400
+
+    if width <= 0 or depth <= 0 or offset < 0:
+        return jsonify({"error": "Width and depth must be > 0, offset >= 0."}), 400
+
     upload_dir = output_dir()
 
     items = []
@@ -79,7 +90,9 @@ def process():
         f.save(full_path)
 
         # Pass REAL path
-        outputs = convert_to_lithophane(full_path, shape=shape)
+        outputs = convert_to_lithophane(
+            full_path, shape=shape, width=width, depth=depth, offset=offset
+        )
 
         items.append({
             "source": filename,

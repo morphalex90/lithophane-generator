@@ -8,7 +8,9 @@
       "Bash(python3 -c \"import ast; ast.parse\\(open\\('app.py'\\).read\\(\\)\\); print\\('app.py OK'\\)\")",
       "Bash(python3 -c \"from werkzeug.utils import secure_filename; print\\(secure_filename\\('../../etc/passwd'\\)\\)\")",
       "Bash(python -c \"import ast; ast.parse\\(open\\('app.py'\\).read\\(\\)\\); print\\('app.py OK'\\)\")",
-      "Bash(python -c \"import ast; ast.parse\\(open\\('generate.py'\\).read\\(\\)\\); print\\('generate.py OK'\\)\")"
+      "Bash(python -c \"import ast; ast.parse\\(open\\('generate.py'\\).read\\(\\)\\); print\\('generate.py OK'\\)\")",
+      "Bash(python -c \"import lithophane, inspect; print\\(inspect.signature\\(lithophane.jpg_to_stl\\)\\); print\\('---'\\); print\\(inspect.getsource\\(lithophane.jpg_to_stl\\)\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('app.py'\\).read\\(\\)\\); ast.parse\\(open\\('generate.py'\\).read\\(\\)\\); print\\('OK'\\)\")"
     ]
   }
 }

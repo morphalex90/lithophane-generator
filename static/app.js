@@ -79,6 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const shape = form.querySelector('input[name="shape"]:checked').value;
         formData.append("shape", shape);
 
+        for (const name of ["width", "depth", "offset"]) {
+            formData.append(name, form.querySelector(`input[name="${name}"]`).value);
+        }
+
         setLoading(true);
         showStatus("Generating lithophanes… this may take a moment.", "loading");
         resultSection.hidden = true;
