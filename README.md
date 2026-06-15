@@ -12,7 +12,7 @@ file in the `uploads/` directory:
 Grab a prebuilt standalone app — no Python setup required:
 
 - **macOS:** [Download MyCoolApp](https://github.com/morphalex90/lithophane-generator/raw/main/dist/MyCoolApp)
-- **Windows:** _coming soon_ — [MyCoolApp.exe](https://github.com/morphalex90/lithophane-generator/raw/main/dist/MyCoolApp.exe) (not yet published)
+- **Windows:** [MyCoolApp.exe](https://github.com/morphalex90/lithophane-generator/raw/main/dist/MyCoolApp.exe)
 
 Prefer to run from source or build it yourself? See [Run locally](#run-locally) and
 [Build a standalone application](#build-a-standalone-application) below.
