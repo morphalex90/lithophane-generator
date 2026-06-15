@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip show *)",
+      "Bash(python -c \"import lithophane; print\\(lithophane.__file__\\)\")",
+      "Read(//opt/homebrew/anaconda3/lib/python3.12/site-packages/lithophane/**)",
+      "Bash(python3 -c \"f='piero.jpeg'; print\\(repr\\(f[:-4] + '_Flat.stl'\\)\\)\")",
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\('app.py'\\).read\\(\\)\\); print\\('app.py OK'\\)\")",
+      "Bash(python3 -c \"from werkzeug.utils import secure_filename; print\\(secure_filename\\('../../etc/passwd'\\)\\)\")"
+    ]
+  }
+}

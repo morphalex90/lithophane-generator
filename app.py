@@ -3,6 +3,7 @@ import sys
 import webbrowser
 from threading import Timer
 from flask import Flask, request, jsonify, render_template
+from werkzeug.utils import secure_filename
 from generate import convert_to_lithophane
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -28,9 +29,11 @@ def process():
         f.seek(0, os.SEEK_END)
         size = f.tell()
         f.seek(0)
-        results.append(f"{f.filename} — {size} bytes")
-        
-        filename = f.filename
+
+        # Sanitize the client-supplied filename to prevent path traversal.
+        filename = secure_filename(f.filename)
+        if not filename:
+            continue
         full_path = os.path.join(UPLOAD_DIR, filename)
 
         # Save file to server
