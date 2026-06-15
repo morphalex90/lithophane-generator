@@ -24,7 +24,7 @@
       "Bash(./buildvenv/bin/python -c \"from PIL import Image; import numpy as np; Image.fromarray\\(\\(np.random.rand\\(40,40,3\\)*255\\).astype\\('uint8'\\)\\).save\\('/tmp/test_pet.png'\\)\")",
       "Bash(./dist/MyCoolApp)",
       "Bash(curl -s --max-time 60 -F \"files=@/tmp/test_pet.png\" -F \"shape=flat\" -F \"width=50\" http://127.0.0.1:5000/process)",
-      "Read(//Users/pieronanni/PetCemeteryLithophane/**)",
+      "Read(//Users/pieronanni/LithophaneGenerator/**)",
       "Bash(pkill -f dist/MyCoolApp)",
       "Bash(curl -s -o /dev/null -w \"GET / -> HTTP %{http_code}\\\\n\" --max-time 5 http://127.0.0.1:5000/)",
       "Bash(curl -s -o /tmp/resp.json -w \"POST /process -> HTTP %{http_code}\\\\n\" --max-time 90 -F \"files=@/tmp/test_pet.png\" -F \"shape=flat\" -F \"width=50\" http://127.0.0.1:5000/process)",
@@ -51,10 +51,10 @@
       "Bash(./buildvenv/bin/python -)",
       "Bash(./buildvenv/bin/python -m PyInstaller.utils.cliutils.archive_viewer --recursive --brief dist/MyCoolApp)",
       "Bash(grep -iE \"transform\\\\._warps\\($|,\\)|transform/_warps\\\\b|transform\\\\._warps[, ]\")",
-      "Bash(cd /Users/pieronanni/Documents/GitHub/pet-cemetery-lithophane *)"
+      "Bash(cd /Users/pieronanni/Documents/GitHub/lithophane-generator *)"
     ],
     "additionalDirectories": [
-      "/Users/pieronanni/PetCemeteryLithophane"
+      "/Users/pieronanni/LithophaneGenerator"
     ]
   }
 }

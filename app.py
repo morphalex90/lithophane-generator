@@ -37,7 +37,7 @@ def output_dir():
     relative "uploads" path would fail there. We therefore write under the
     user's home when frozen, and keep a local ./uploads from source for dev."""
     if getattr(sys, "frozen", False):
-        base = os.path.join(os.path.expanduser("~"), "PetCemeteryLithophane")
+        base = os.path.join(os.path.expanduser("~"), "LithophaneGenerator")
     else:
         base = os.path.join(os.path.abspath("."), "uploads")
     os.makedirs(base, exist_ok=True)

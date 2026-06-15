@@ -1,4 +1,4 @@
-# Pet Cemetery Lithophane
+# Lithophane Generator
 
 A small Flask web app that turns an uploaded image into a 3D-printable
 lithophane. For each image it generates two STL files next to the uploaded
@@ -16,8 +16,8 @@ file in the `uploads/` directory:
 
 The quickest path on macOS / Linux is the `Makefile`:
 
-    git clone https://github.com/<your-account>/pet-cemetery-lithophane.git
-    cd pet-cemetery-lithophane
+    git clone https://github.com/morphalex90/lithophane-generator.git
+    cd lithophane-generator
     make install      # create the venv and install dependencies
     make run          # start the app
 
