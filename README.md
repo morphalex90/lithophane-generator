@@ -7,6 +7,16 @@ file in the `uploads/` directory:
 - `<name>_Flat.stl` — a flat lithophane plate
 - `<name>_Cylinder.stl` — the same lithophane wrapped into a cylinder
 
+## Download
+
+Grab a prebuilt standalone app — no Python setup required:
+
+- **macOS:** [Download MyCoolApp](https://github.com/morphalex90/lithophane-generator/raw/main/dist/MyCoolApp)
+- **Windows:** _coming soon_ — [MyCoolApp.exe](https://github.com/morphalex90/lithophane-generator/raw/main/dist/MyCoolApp.exe) (not yet published)
+
+Prefer to run from source or build it yourself? See [Run locally](#run-locally) and
+[Build a standalone application](#build-a-standalone-application) below.
+
 ## Requirements
 
 - Python 3.9+
