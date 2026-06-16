@@ -28,7 +28,7 @@ body {
 
 .card {
     width: 100%;
-    max-width: 520px;
+    max-width: 680px;
     background: var(--card-bg);
     border-radius: 16px;
     padding: 2rem;
@@ -70,6 +70,23 @@ h1 {
     font-weight: 600;
 }
 
+.field-hint {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--muted);
+}
+
+.field-hint strong {
+    color: var(--text);
+}
+
+.param-hint {
+    font-size: 0.75rem;
+    line-height: 1.35;
+    color: var(--muted);
+}
+
 .file-field input[type="file"] {
     font-size: 0.9rem;
 }
@@ -89,6 +106,11 @@ h1 {
     padding: 0;
     margin-bottom: 0.5rem;
     font-weight: 600;
+}
+
+.shape-field .field-hint,
+.params-field .field-hint {
+    margin-bottom: 0.6rem;
 }
 
 .segmented {
