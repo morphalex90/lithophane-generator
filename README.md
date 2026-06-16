@@ -17,6 +17,27 @@ Grab a prebuilt standalone app — no Python setup required:
 These always point at the newest build, published automatically from
 [GitHub Actions](.github/workflows/build.yml) on every update to `main`.
 
+### Opening the app on macOS
+
+The macOS build isn't signed or notarized with an Apple Developer account, so
+the first time you open it Gatekeeper shows a warning like *"Apple could not
+verify 'lithophane-generator-macos' is free of malware."* This is expected —
+it just means the app isn't from the App Store or a paid developer. To open it:
+
+1. Open **System Settings → Privacy & Security**.
+2. Scroll down to the message about `lithophane-generator-macos` and click
+   **Open Anyway**, then confirm.
+
+Or, from Terminal, remove the download quarantine flag and run it:
+
+```bash
+xattr -d com.apple.quarantine lithophane-generator-macos
+chmod +x lithophane-generator-macos
+./lithophane-generator-macos
+```
+
+You only need to do this once per download.
+
 Prefer to run from source or build it yourself? See [Run locally](#run-locally) and
 [Build a standalone application](#build-a-standalone-application) below.
 
