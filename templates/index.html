@@ -17,12 +17,17 @@
         <form id="upload_form">
             <label class="file-field" for="file_input">
                 <span class="file-label">Choose images</span>
+                <span class="field-hint">Pick one or more photos. Each image becomes its own lithophane &mdash; brighter
+                    areas print thinner so they glow, darker areas print thicker.</span>
                 <input type="file" id="file_input" name="files" accept="image/*" multiple>
                 <span id="file_summary" class="file-summary">No files selected</span>
             </label>
 
             <fieldset class="shape-field">
                 <legend>Shape</legend>
+                <p class="field-hint">How the lithophane is formed: <strong>Flat</strong> is a printable panel,
+                    <strong>Cylinder</strong> wraps the image into a tube (e.g. for a lamp), and
+                    <strong>Both</strong> generates one of each.</p>
                 <div class="segmented" role="group" aria-label="Lithophane shape">
                     <label class="segment">
                         <input type="radio" name="shape" value="flat" checked>
@@ -41,18 +46,25 @@
 
             <fieldset class="params-field">
                 <legend>Dimensions (mm)</legend>
+                <p class="field-hint">All measurements are in millimetres.</p>
                 <div class="params-grid">
                     <label class="param">
                         <span>Width</span>
                         <input type="number" name="width" value="102" min="1" step="1">
+                        <span class="param-hint">Overall width of the lithophane. Height scales automatically to keep the
+                            image's aspect ratio.</span>
                     </label>
                     <label class="param">
                         <span>Depth</span>
                         <input type="number" name="depth" value="3" min="0.1" step="0.1">
+                        <span class="param-hint">Thickness of the darkest (thickest) areas. Larger values give more
+                            contrast but use more material.</span>
                     </label>
                     <label class="param">
                         <span>Offset</span>
                         <input type="number" name="offset" value="0.5" min="0" step="0.1">
+                        <span class="param-hint">Minimum thickness of the brightest areas, so the print stays solid and
+                            doesn't have holes.</span>
                     </label>
                 </div>
             </fieldset>
